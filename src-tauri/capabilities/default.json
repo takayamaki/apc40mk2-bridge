@@ -1,0 +1,10 @@
+{
+  "identifier": "default",
+  "description": "Default capabilities for debug window",
+  "windows": ["*"],
+  "permissions": [
+    "core:default",
+    "core:event:default",
+    "opener:default"
+  ]
+}

@@ -1,0 +1,21 @@
+[package]
+name = "apc40mk2-bridge"
+version = "0.1.0"
+description = "APC40 mk2 MIDI LED bridge — loopMIDI to USB device forwarder"
+authors = ["takayamaki"]
+edition = "2021"
+
+[lib]
+name = "apc40mk2_bridge_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = ["tray-icon"] }
+tauri-plugin-opener = "2"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+midir = "0.10"
+parking_lot = "0.12"
