@@ -5,6 +5,9 @@ on:
     tags:
       - "v*"
 
+permissions:
+  contents: write
+
 jobs:
   build:
     name: Build Windows
@@ -38,6 +41,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tagName: ${{ github.ref_name }}
-          releaseName: "APC Bridge ${{ github.ref_name }}"
+          releaseName: "APC40mk2 Bridge ${{ github.ref_name }}"
           releaseBody: "MIDI bridge for APC40 mk2 LED feedback on Windows MIDI Services 2026"
           releaseDraft: true
