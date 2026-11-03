@@ -28,10 +28,10 @@ jobs:
             libjavascriptcoregtk-4.1-dev \
             libasound2-dev
 
+      # rustup comes with the runner: no third-party action to install Rust.
+      # The version and components come from rust-toolchain.toml (Dependabot updates it).
       - name: Setup Rust
-        uses: dtolnay/rust-toolchain@stable
-        with:
-          components: clippy
+        run: rustup toolchain install
 
       - uses: Swatinem/rust-cache@v2.9.3
         with:
