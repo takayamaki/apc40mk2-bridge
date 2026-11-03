@@ -13,7 +13,7 @@ jobs:
     name: Cargo Check + Clippy
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7.0.1
 
       - name: Install system dependencies
         run: |
@@ -28,12 +28,12 @@ jobs:
             libjavascriptcoregtk-4.1-dev \
             libasound2-dev
 
+      # rustup comes with the runner: no third-party action to install Rust.
+      # The version and components come from rust-toolchain.toml (Dependabot updates it).
       - name: Setup Rust
-        uses: dtolnay/rust-toolchain@stable
-        with:
-          components: clippy
+        run: rustup toolchain install
 
-      - uses: Swatinem/rust-cache@v2
+      - uses: Swatinem/rust-cache@v2.9.3
         with:
           workspaces: src-tauri
 
@@ -49,15 +49,15 @@ jobs:
     name: Frontend Build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7.0.1
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v7.1.0
         with:
           node-version: lts/*
 
       - name: Setup pnpm
-        uses: pnpm/action-setup@v4
+        uses: pnpm/action-setup@v6.0.10
         with:
           version: latest
 
